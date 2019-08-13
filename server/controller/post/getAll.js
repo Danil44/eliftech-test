@@ -1,0 +1,18 @@
+const { post } = require("../../domain");
+
+const sendSuccess = (res, data) => {
+  res.send({ status: "success", post: data });
+};
+
+const sendError = (res, error) => {
+  res.status(401).send({ status: "fail", error });
+};
+
+const getAll = (req, res) => {
+  return post
+    .getAll()
+    .then(posts => sendSuccess(res, posts))
+    .catch(err => sendError(res, err));
+};
+
+module.exports = getAll;
