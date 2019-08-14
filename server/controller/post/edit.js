@@ -1,7 +1,7 @@
 const { post } = require("../../domain");
 
 const sendSuccess = (res, data) => {
-  res.send({ status: "success", post: data });
+  res.send({ status: "success", posts: data });
 };
 
 const sendError = (res, error) => {

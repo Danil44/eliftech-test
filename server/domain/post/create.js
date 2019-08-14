@@ -6,7 +6,8 @@ const createPost = post =>
 
     newPost
       .save()
-      .then(res)
+      .then(() => Post.find())
+      .then(posts => res(posts))
       .catch(rej);
   });
 

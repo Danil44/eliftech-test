@@ -3,7 +3,7 @@ const { post } = require("../../domain");
 const sendSuccess = (res, data) => {
   res.json({
     status: "success",
-    post: data
+    posts: data
   });
 };
 
