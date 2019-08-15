@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Container, Typography } from '@material-ui/core';
 import PostsList from '../PostsList/PostsList';
 import EditForm from '../EditForm/EditFormContainer';
 import AddPostForm from '../AddPostForm/AddPostForm';
+import AddButton from '../AddButton/AddButton';
+import styles from './Posts.module.css';
+import hotDogImg from '../../images/happy-hot-dog.png';
 
 export const PostsContext = React.createContext({});
 
@@ -55,7 +59,13 @@ export default class Posts extends Component {
     const { posts } = this.props;
     const { editFormIsOpen, addFormIsOpen, postId } = this.state;
     return (
-      <div>
+      <Container maxWidth="md" className={styles.container}>
+        <Typography variant="h4">Share with your happy hot-dog!</Typography>
+        <img
+          src={hotDogImg}
+          alt="hot-dog picutre"
+          style={{ maxWidth: '20%' }}
+        />
         <PostsContext.Provider
           value={{
             toggleEditForm: this.toggleEditForm,
@@ -66,15 +76,24 @@ export default class Posts extends Component {
         </PostsContext.Provider>
 
         {editFormIsOpen && (
-          <EditForm postId={postId} handleSubmit={this.handleEditSubmit} />
+          <EditForm
+            isOpen={editFormIsOpen}
+            postId={postId}
+            handleSubmit={this.handleEditSubmit}
+            toggleForm={this.toggleEditForm}
+          />
         )}
 
-        {addFormIsOpen && <AddPostForm handleSubmit={this.handlePostSubmit} />}
+        {addFormIsOpen && (
+          <AddPostForm
+            isOpen={addFormIsOpen}
+            toggleForm={this.toggleAddForm}
+            handleSubmit={this.handlePostSubmit}
+          />
+        )}
 
-        <button type="button" onClick={() => this.toggleAddForm()}>
-          Add Post
-        </button>
-      </div>
+        <AddButton handleOpenAddForm={this.toggleAddForm} />
+      </Container>
     );
   }
 }

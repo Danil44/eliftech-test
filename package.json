@@ -18,6 +18,7 @@
     "client": "cd client && yarn start",
     "server": "nodemon ./server/server.js",
     "dev": "concurrently \"yarn run server\" \"yarn run client\"",
-    "debug": "nodemon --inspect ./server/server.js"
+    "debug": "nodemon --inspect ./server/server.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false cd client && yarn install && yarn run build --prefix client"
   }
 }

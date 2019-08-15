@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const { database, port, secret } = require("./config");
 const bodyParser = require("body-parser");
 const app = express();
+const path = require("path");
 
 mongoose.connect(database, { useNewUrlParser: true }, () =>
   console.log(":::connected to db:::")
@@ -31,4 +32,11 @@ app
 
 app.listen(process.env.PORT || port);
 
+if (process.env.NODE_ENV === "production") {
+  app.use(expess.static("client/build"));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 global.app = app;
