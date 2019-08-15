@@ -1,5 +1,5 @@
 {
-  "name": "todo-app",
+  "name": "hot-dogs",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -15,7 +15,7 @@
     "nodemon": "^1.19.1"
   },
   "scripts": {
-    "start": "node ./server/index.js",
+    "start": "node ./server/server.js",
     "client": "cd client && yarn start",
     "server": "nodemon ./server/server.js",
     "dev": "concurrently \"yarn run server\" \"yarn run client\"",
