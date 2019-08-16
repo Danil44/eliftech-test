@@ -6,6 +6,7 @@ const { database, port, secret } = require("./config");
 const bodyParser = require("body-parser");
 const app = express();
 const path = require("path");
+require("dotenv").config();
 
 mongoose.connect(database, { useNewUrlParser: true }, () =>
   console.log(":::connected to db:::")

@@ -13,7 +13,6 @@ const getAll = (req, res) => {
   return post
     .getAll()
     .then(posts => {
-      console.log(posts);
       sendSuccess(res, posts);
     })
     .catch(err => sendError(res, err));

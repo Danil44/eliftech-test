@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 module.exports = {
   database: `mongodb+srv://danil44:${
     process.env.DB_PASS
